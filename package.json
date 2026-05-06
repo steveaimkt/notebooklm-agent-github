@@ -1,0 +1,18 @@
+{
+  "name": "notebooklm-agent-github",
+  "version": "1.0.0",
+  "description": "NotebookLM MCP 클라이언트 + 셋업/시연 마법사 (/start 슬래시 커맨드)",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "check": "node scripts/check-env.mjs",
+    "auth": "node scripts/setup-auth.mjs",
+    "register": "node scripts/setup-notebook.mjs",
+    "health": "node scripts/health-check.mjs",
+    "ask": "node scripts/ask.mjs"
+  },
+  "license": "MIT"
+}

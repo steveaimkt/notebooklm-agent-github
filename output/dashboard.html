@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>크래프트볼트 전기톱 — 시장조사 대시보드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" onerror="this.remove()">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0b0d10; --panel:#121519; --panel2:#171b21; --line:#23272d;
+    --ink:#e9edf2; --ink2:#a8b0bb; --ink3:#6b7380;
+    --accent:#ff6b35; --accent2:#ffa75e; --good:#3ddc97; --warn:#f5a623; --bad:#ff5d6c;
+    --chip:#1e232a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Noto Sans KR",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;line-height:1.55;letter-spacing:-0.01em}
+  a{color:var(--accent2);text-decoration:none}
+  .wrap{max-width:1280px;margin:0 auto;padding:32px 28px 80px}
+  header.hero{padding:48px 28px 32px;background:linear-gradient(180deg,#181c22 0%,#0b0d10 100%);border-bottom:1px solid var(--line)}
+  header.hero .wrap{padding:0 28px}
+  .eyebrow{font-size:12px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase;font-weight:600}
+  h1{font-size:42px;line-height:1.15;margin:8px 0 6px;font-weight:800}
+  h1 .accent{color:var(--accent)}
+  .sub{color:var(--ink2);font-size:15px;max-width:880px}
+  .meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--ink3)}
+  .meta span{padding:4px 10px;background:var(--chip);border-radius:999px;border:1px solid var(--line)}
+  .grid{display:grid;gap:18px}
+  .grid-2{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:900px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+  section{margin-top:42px}
+  .section-title{display:flex;align-items:baseline;gap:14px;margin:0 0 18px}
+  .section-title h2{font-size:22px;margin:0;font-weight:700;letter-spacing:-.02em}
+  .section-title .count{color:var(--ink3);font-size:13px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card.tight{padding:18px}
+  .card h3{margin:0 0 6px;font-size:15px;color:var(--ink2);font-weight:500}
+  .card .big{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .card .delta{margin-top:4px;font-size:13px;color:var(--good)}
+  .card .delta.warn{color:var(--warn)}
+  .card .src{margin-top:10px;font-size:11px;color:var(--ink3)}
+  .pill{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;background:var(--chip);border:1px solid var(--line);color:var(--ink2);margin-right:6px}
+  .pill.accent{background:rgba(255,107,53,.12);color:var(--accent2);border-color:rgba(255,107,53,.4)}
+  .pill.good{background:rgba(61,220,151,.1);color:var(--good);border-color:rgba(61,220,151,.4)}
+  .pill.bad{background:rgba(255,93,108,.1);color:var(--bad);border-color:rgba(255,93,108,.4)}
+  .pill.warn{background:rgba(245,166,35,.1);color:var(--warn);border-color:rgba(245,166,35,.4)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--ink3);font-weight:500;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+  tr:last-child td{border-bottom:none}
+  .num{font-variant-numeric:tabular-nums;text-align:right}
+  .quote{font-size:13px;color:var(--ink2);border-left:2px solid var(--accent);padding:6px 0 6px 12px;margin:8px 0}
+  .persona{display:flex;flex-direction:column;gap:8px}
+  .persona .name{font-size:18px;font-weight:700;letter-spacing:-.01em}
+  .persona .age{color:var(--ink3);font-size:13px}
+  .persona .role{color:var(--accent2);font-size:13px;margin-bottom:4px}
+  .persona ul{margin:6px 0 0;padding-left:18px;color:var(--ink2);font-size:13px}
+  .persona li{margin-bottom:2px}
+  .bar{display:flex;align-items:center;gap:8px;margin:4px 0}
+  .bar .label{flex:0 0 130px;font-size:13px;color:var(--ink2)}
+  .bar .track{flex:1;height:8px;background:#1c2026;border-radius:99px;overflow:hidden}
+  .bar .fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px}
+  .bar .val{flex:0 0 36px;font-size:12px;color:var(--ink3);text-align:right;font-variant-numeric:tabular-nums}
+  .matrix{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .matrix > div{background:var(--panel);padding:14px}
+  .matrix .head{background:var(--panel2);color:var(--ink3);font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:500}
+  .legend{display:flex;gap:14px;font-size:12px;color:var(--ink3);margin:6px 0 14px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle}
+  .footer{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink3);font-size:12px}
+  .insight{padding:18px;background:linear-gradient(180deg,rgba(255,107,53,.06),transparent);border:1px solid rgba(255,107,53,.25);border-radius:14px;margin-bottom:14px}
+  .insight .num{display:inline-block;width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;text-align:center;line-height:28px;margin-right:10px;font-size:14px}
+  .insight .title{font-size:16px;font-weight:700;display:flex;align-items:center}
+  .insight p{margin:8px 0 0;color:var(--ink2);font-size:13.5px}
+  .kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+  @media (max-width:900px){.kpi-strip{grid-template-columns:repeat(2,1fr)}}
+  .kbd{display:inline-block;padding:1px 6px;font-size:11px;background:#0e1116;border:1px solid var(--line);border-radius:4px;color:var(--ink3);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .ban{color:var(--bad);font-weight:600}
+  .keep{color:var(--good);font-weight:600}
+  .row-flex{display:flex;gap:16px;flex-wrap:wrap}
+  .chip-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  canvas{max-width:100%}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Market Research Brief</div>
+    <h1>크래프트볼트 <span class="accent">무선 전기톱</span> 시장조사 대시보드</h1>
+    <p class="sub">리뷰 12건 + NotebookLM 시장 자료 기반 종합 분석. 페르소나·키워드·기회·리스크·전략 제안을 한 화면에서 확인.</p>
+    <div class="meta">
+      <span>제품: 크래프트볼트 21V 미니 체인톱 (8인치 / 20cm)</span>
+      <span>리뷰 표본: 12건 (5★8, 4★2, 3★1, 1★1)</span>
+      <span>분석일: 2026-05-08</span>
+      <span>표본 한계 — 50건+ 확보 권장</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1. KPI strip -->
+  <section>
+    <div class="section-title"><h2>① 시장 개요 — 한눈에</h2><span class="count">출처: NotebookLM "크래프트볼트 시장 분석"</span></div>
+    <div class="kpi-strip">
+      <div class="card">
+        <h3>글로벌 무선 미니 체인소</h3>
+        <div class="big">USD 3.2B</div>
+        <div class="delta">2032년 전망 (CAGR 8.9%)</div>
+        <div class="src">전동공구 카테고리 최고 성장</div>
+      </div>
+      <div class="card">
+        <h3>한국 전동공구 시장</h3>
+        <div class="big">1조 1,018억</div>
+        <div class="delta">2024년, +35.2% (vs 2019)</div>
+        <div class="src">1조 원 벽 돌파</div>
+      </div>
+      <div class="card">
+        <h3>아·태 무선 체인소 CAGR</h3>
+        <div class="big">9% +</div>
+        <div class="delta">글로벌 최고치</div>
+        <div class="src">2032년 USD 600M 도달</div>
+      </div>
+      <div class="card">
+        <h3>한국 셀프인테리어</h3>
+        <div class="big">18조 원</div>
+        <div class="delta">2023년, +44% (vs 2015)</div>
+        <div class="src">DIY·홈가드닝 구조적 성장</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Charts -->
+  <section>
+    <div class="section-title"><h2>② 시장 성장 + 리뷰 분포</h2></div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>글로벌 무선 미니 체인소 — 9년간 성장 곡선</h3>
+        <canvas id="growthChart" height="200"></canvas>
+        <div class="src">2023 USD 1.5B → 2032 USD 3.2B (CAGR 8.9%) — NotebookLM</div>
+      </div>
+      <div class="card">
+        <h3>리뷰 별점 분포 (n=12)</h3>
+        <canvas id="ratingChart" height="200"></canvas>
+        <div class="src">5★ 67% / 4★ 17% / 3★ 8% / 1★ 8%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Keywords -->
+  <section>
+    <div class="section-title"><h2>③ 만족 vs 불만 키워드</h2></div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>만족 키워드 TOP 10 (언급 횟수)</h3>
+        <div class="bar"><span class="label">무선·이동 자유</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">5</span></div>
+        <div class="bar"><span class="label">배터리 용량</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">5</span></div>
+        <div class="bar"><span class="label">절삭력·파워</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">5</span></div>
+        <div class="bar"><span class="label">사용 간편</span><div class="track"><div class="fill" style="width:80%"></div></div><span class="val">4</span></div>
+        <div class="bar"><span class="label">가벼운 무게</span><div class="track"><div class="fill" style="width:60%"></div></div><span class="val">3</span></div>
+        <div class="bar"><span class="label">한 손 조작</span><div class="track"><div class="fill" style="width:40%"></div></div><span class="val">2</span></div>
+        <div class="bar"><span class="label">안전스위치</span><div class="track"><div class="fill" style="width:20%"></div></div><span class="val">1</span></div>
+        <div class="bar"><span class="label">관통력(톱날)</span><div class="track"><div class="fill" style="width:20%"></div></div><span class="val">1</span></div>
+        <div class="bar"><span class="label">BLDC + 국내 A/S</span><div class="track"><div class="fill" style="width:20%"></div></div><span class="val">1</span></div>
+        <div class="bar"><span class="label">가격 만족</span><div class="track"><div class="fill" style="width:20%"></div></div><span class="val">1</span></div>
+      </div>
+      <div class="card">
+        <h3>불만 키워드 + 심각도</h3>
+        <table>
+          <thead><tr><th>카테고리</th><th>키워드</th><th class="num">건수</th><th>심각도</th></tr></thead>
+          <tbody>
+            <tr><td>부속품</td><td>체인 오일 미동봉</td><td class="num">2</td><td><span class="pill bad">상</span></td></tr>
+            <tr><td>품질·내구</td><td>체인 늘어남·풀림</td><td class="num">2</td><td><span class="pill bad">상</span></td></tr>
+            <tr><td>품질·배송</td><td>사용감 있는 제품 수령</td><td class="num">1</td><td><span class="pill bad">상</span></td></tr>
+            <tr><td>성능</td><td>배터리 지속시간(~2.5h)</td><td class="num">1</td><td><span class="pill warn">중</span></td></tr>
+            <tr><td>성능</td><td>20cm↑ 마력 한계</td><td class="num">1</td><td><span class="pill warn">중</span></td></tr>
+            <tr><td>편의·안전</td><td>초보자 숙련 필요</td><td class="num">1</td><td><span class="pill">하</span></td></tr>
+          </tbody>
+        </table>
+        <div class="quote">"공구박스에 오일 넣는 공간은 있는데 오일이 없어. 별도 구매를 해야 되네." — 김*수, 4점</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Insights -->
+  <section>
+    <div class="section-title"><h2>④ 핵심 인사이트 3가지</h2></div>
+    <div class="insight">
+      <div class="title"><span class="num">1</span>USP는 성능이 아니라 "케이블·엔진톱 대체재"</div>
+      <p>만족 TOP 1·5·6이 모두 편의성(무선·경량·한 손). 다수 사용자가 "큰 엔진톱은 자주 쓸 일 없을 것" "큰 전기톱은 위험·무거워서 처박아둠"으로 명시. <strong style="color:var(--ink)">메시지 우선순위 = 무선 → 경량 → 한 손 → 그다음 절삭력.</strong></p>
+    </div>
+    <div class="insight">
+      <div class="title"><span class="num">2</span>"15~20cm 가지치기 도구" 사용 맥락 경계선이 명확</div>
+      <p>긍정 리뷰는 모두 15cm 이하 가지치기·과수원·정원 맥락. 한*국(5★, 67세 목공 베테랑)조차 "20cm 이상은 마력 한계로 천천히". <strong style="color:var(--ink)">"대형 벌목"으로 메시지 잡으면 별점 폭락 위험.</strong> 상세페이지에 적정 굵기 명시 권장.</p>
+    </div>
+    <div class="insight">
+      <div class="title"><span class="num">3</span>별점 1·3·4의 핵심은 "기본기 결함"(오일·체인·검수)</div>
+      <p>불만 6건 중 4건이 오일 미동봉 + 체인 늘어남 + 사용감 있는 제품 수령. 절삭력·무선 같은 큰 강점은 모두 인정받음. <strong style="color:var(--ink)">즉시 개선 가능한 영역만 잡으면 평점 평균 4.0 → 4.5 회복 + 구매전환 직접 상승.</strong></p>
+    </div>
+  </section>
+
+  <!-- 5. Personas -->
+  <section>
+    <div class="section-title"><h2>⑤ 타겟 페르소나 3개</h2><span class="count">전체 잠재 고객 70%+ 커버</span></div>
+    <div class="grid grid-3">
+      <div class="card persona">
+        <div>
+          <span class="pill accent">비중 ~25%</span>
+          <span class="pill">근거 3건</span>
+        </div>
+        <div class="name">박정훈</div>
+        <div class="age">56세 / 남 · 경북 의성</div>
+        <div class="role">과수원 운영 시니어</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:6px"><strong style="color:var(--ink)">동기:</strong> 90m 케이블·엔진톱 대체재 절실</div>
+        <div><strong style="color:var(--ink);font-size:13px">핵심 니즈</strong>
+          <ul>
+            <li>무선·이동 자유</li>
+            <li>BLDC 모터 (내구성)</li>
+            <li>국내 A/S·배터리 보증</li>
+            <li>가성비</li>
+          </ul>
+        </div>
+        <div style="margin-top:8px"><strong style="color:var(--ink);font-size:13px">불만 포인트</strong>
+          <ul><li>반나절 작업 시 배터리 부족</li><li>20cm↑ 마력 한계</li></ul>
+        </div>
+        <div class="quote" style="margin-top:6px">"DC가 아닌 BLDC모터… 배터리 A/S, 국내 사후 품질관리." — 이*근</div>
+      </div>
+
+      <div class="card persona">
+        <div>
+          <span class="pill accent">비중 ~33%</span>
+          <span class="pill">근거 5건</span>
+        </div>
+        <div class="name">김지영</div>
+        <div class="age">38세 / 여 · 경기 신도시</div>
+        <div class="role">DIY 정원 입문자</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:6px"><strong style="color:var(--ink)">동기:</strong> 처음 써보는 가벼운 도구</div>
+        <div><strong style="color:var(--ink);font-size:13px">핵심 니즈</strong>
+          <ul>
+            <li>사용 간편함 (설명서 없이도)</li>
+            <li>가벼운 무게</li>
+            <li>안전스위치</li>
+            <li>무선</li>
+          </ul>
+        </div>
+        <div style="margin-top:8px"><strong style="color:var(--ink);font-size:13px">불만 포인트</strong>
+          <ul><li>오일 미동봉 같은 검수 결함</li><li>"당연히 들어 있을 것" 기대치 높음</li></ul>
+        </div>
+        <div class="quote" style="margin-top:6px">"전기톱을 처음 써봤는데 사용법이 너무 간편해서 바로 적응." — 최*지</div>
+      </div>
+
+      <div class="card persona">
+        <div>
+          <span class="pill accent">비중 ~17%</span>
+          <span class="pill">근거 2건 / 영향력 ↑</span>
+        </div>
+        <div class="name">정한수</div>
+        <div class="age">67세 / 남 · 전원생활</div>
+        <div class="role">시니어 목공·취미 마니아 (어워드 리뷰어)</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:6px"><strong style="color:var(--ink)">동기:</strong> 관통력·차별점에 끌림</div>
+        <div><strong style="color:var(--ink);font-size:13px">핵심 니즈</strong>
+          <ul>
+            <li>관통력·절삭 성능</li>
+            <li>안전스위치 (시니어 민감)</li>
+            <li>한 손 조작</li>
+            <li>비교 우위 명확한 차별점</li>
+          </ul>
+        </div>
+        <div style="margin-top:8px"><strong style="color:var(--ink);font-size:13px">불만 포인트</strong>
+          <ul><li>20cm↑ 소형 장비 마력 한계 인지</li><li>초보자 진입 양면성</li></ul>
+        </div>
+        <div class="quote" style="margin-top:6px">"끝으로 갈수록 도검처럼 좁아진… 관통이 가능." — 한*국 (도움 11명)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Competition -->
+  <section>
+    <div class="section-title"><h2>⑥ 경쟁 환경 — 한국 전동공구 점유율</h2><span class="count">출처: 다나와 DPG 2020-2021 / 대한경제 2021.5</span></div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>판매금액 점유율</h3>
+        <canvas id="shareChart" height="220"></canvas>
+        <div class="src">DeWalt 28.49% / Bosch 22.27% / Milwaukee 10.79% / Makita 10.96%</div>
+      </div>
+      <div class="card">
+        <h3>크래프트볼트 차별화 카드</h3>
+        <table>
+          <thead><tr><th>비교 축</th><th>빅4</th><th>크래프트볼트</th></tr></thead>
+          <tbody>
+            <tr><td>가격</td><td>15~50만 원</td><td><span class="keep">5~15만 원</span></td></tr>
+            <tr><td>배터리 호환</td><td>자사 록인</td><td><span class="keep">마끼다 21V 호환</span></td></tr>
+            <tr><td>국내 A/S</td><td>글로벌사 의존</td><td><span class="keep">국내 사후 품질관리</span></td></tr>
+            <tr><td>톱날 형태</td><td>일반 ㅣ자형</td><td><span class="keep">도검형 (관통력)</span></td></tr>
+            <tr><td>BLDC 모터</td><td>표준</td><td>채택</td></tr>
+            <tr><td>브랜드 인지도</td><td>매우 강함</td><td><span class="ban">낮음 (해자로 보완)</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Opportunities & Risks -->
+  <section>
+    <div class="section-title"><h2>⑦ 기회 3 · 리스크 3</h2></div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 style="color:var(--good)">기회 영역</h3>
+        <p style="color:var(--ink2);font-size:13.5px"><strong style="color:var(--ink)">1. 도심 정원 무선톱 포지셔닝</strong> — 한국 저소음 정책(가솔린 100dB → 무선 80dB) + 셀프인테리어 18조 원. 김지영 페르소나 33% 비중 → 마케팅 자원 우선 배치.</p>
+        <p style="color:var(--ink2);font-size:13.5px"><strong style="color:var(--ink)">2. 빅4 못 메꾸는 "중저가 + 마끼다 호환 + 국내 A/S"</strong> — Bosch·DeWalt·Milwaukee는 록인이라 호환 카드 못 씀. 박정훈 페르소나의 결정 요인과 일치.</p>
+        <p style="color:var(--ink2);font-size:13.5px"><strong style="color:var(--ink)">3. 시니어·과수농 직접 채널</strong> — 농업기술센터·농협·농업 유튜버 협업. 빅4 미진입 영역 선점 가능.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--bad)">리스크</h3>
+        <p style="color:var(--ink2);font-size:13.5px"><strong style="color:var(--ink)">1. 빅4 미니 체인소 진입</strong> — 밀워키 M18 FUEL이 글로벌 1위. 대응 = 호환·국내 A/S 해자 강화.</p>
+        <p style="color:var(--ink2);font-size:13.5px"><strong style="color:var(--ink)">2. 기본기 결함이 평점·구매전환 타격</strong> — 별점 1·3·4점 4건 모두 오일·체인·검수. 4.5 미만 구매전환 급락.</p>
+        <p style="color:var(--ink2);font-size:13.5px"><strong style="color:var(--ink)">3. "대형 벌목 메시지" 기대치 미스매치</strong> — 우리 제품은 15~20cm 적정. 대응 = 적정 굵기 명시.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Strategy proposals -->
+  <section>
+    <div class="section-title"><h2>⑧ 전략 제안 5가지</h2></div>
+    <div class="card">
+      <table>
+        <thead><tr><th style="width:48px">#</th><th>영역</th><th>실행 액션</th><th>기대 효과</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td>상세페이지</td><td>박정훈 → 김지영 → 정한수 순서로 메시지 배치 (BLDC·A/S → 가벼움·안전 → 관통력)</td><td>전체 페르소나 70% 커버</td></tr>
+          <tr><td><strong>2</strong></td><td>광고 카피 분기</td><td>네이버 농업 카페·유튜브(박정훈) / 인스타·홈가드닝(김지영) / 시니어 커뮤니티(정한수)</td><td>채널·페르소나 매칭</td></tr>
+          <tr><td><strong>3</strong></td><td>제품 개선</td><td>체인 오일 충분 동봉 + 출고 전 텐션 조정 + 출고 검수 강화</td><td>평점 4.0 → 4.5 회복</td></tr>
+          <tr><td><strong>4</strong></td><td>라인업 확장</td><td>21V 배터리 플랫폼 공유하는 2~3개 공구 추가 (송풍기·드릴 등)</td><td>헤비 사용자 LTV 2~3배</td></tr>
+          <tr><td><strong>5</strong></td><td>채널 개척</td><td>농업기술센터·농협 시연, 농업 유튜버 협업, 어워드 리뷰어 앰버서더</td><td>빅4 미진입 영역 선점</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 9. Keywords / Avoid -->
+  <section>
+    <div class="section-title"><h2>⑨ 메시지 가이드 — 강조 vs 금지</h2></div>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 style="color:var(--good)">반드시 강조할 키워드 5</h3>
+        <div class="chip-row">
+          <span class="pill good">무선</span>
+          <span class="pill good">BLDC 모터</span>
+          <span class="pill good">마끼다 21V 호환</span>
+          <span class="pill good">8인치 / 한 손 / 가벼움</span>
+          <span class="pill good">국내 사후 품질관리</span>
+        </div>
+        <p style="color:var(--ink2);font-size:13px;margin-top:14px">→ 케이블·엔진톱 대체재 가치를 가장 직접 전달하는 5개. 박정훈·김지영·정한수 모두에게 통함.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--bad)">절대 쓰지 말아야 할 표현 3</h3>
+        <p style="font-size:13.5px;color:var(--ink2)"><span class="ban">"대형 벌목용·전문가용"</span><br><span style="color:var(--ink3);font-size:12.5px">→ 우리 제품 한계는 15~20cm. "벌목"은 기대치 미스매치 → 별점 폭락.</span></p>
+        <p style="font-size:13.5px;color:var(--ink2)"><span class="ban">"가성비 최고·역대급"</span><br><span style="color:var(--ink3);font-size:12.5px">→ 시니어 페르소나는 광고 톤 회의적. 구체 근거(BLDC·A/S·호환)가 효과적.</span></p>
+        <p style="font-size:13.5px;color:var(--ink2)"><span class="ban">"무한 작업·올데이 사용"</span><br><span style="color:var(--ink3);font-size:12.5px">→ 4A 1개 약 2시간. 과장하면 후속 별점 1·3점 직격. 구체 수치 제시가 신뢰.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Brief -->
+  <section>
+    <div class="section-title"><h2>⑩ 한 줄 요약 (다음 에이전트 전달용)</h2></div>
+    <div class="card">
+      <p style="font-size:18px;line-height:1.5;margin:0 0 8px"><strong style="color:var(--accent2)">"케이블·엔진톱의 무게와 불편에서 벗어나고 싶은, 과수원·정원·목공 사용자"</strong></p>
+      <p style="font-size:13.5px;color:var(--ink2);margin:0">30~60대, 가성비와 국내 A/S를 따지며, 무선·경량·한 손 조작을 첫 번째로 본다. 3개 페르소나(박정훈 25% / 김지영 33% / 정한수 17%)가 70%+ 커버.</p>
+      <div style="margin-top:14px;font-size:12px;color:var(--ink3)">
+        다음 에이전트 활용 → 상세페이지 OS(Part 5) · 콘텐츠 OS(Part 7) · 제안서 OS(Part 8)
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    출처 — NotebookLM "크래프트볼트 시장 분석" (크래프트볼트_시장조사_리포트.pdf, Cordless Power Tools Market Forecast 2025-2034) / input/craftvolt_reviews.md (12건) / output/review_keywords_analysis.md / output/target_personas.md / output/market_analysis_report.md / output/research_brief.md.
+    <br>주의: 표본 12건 한계로 인해 페르소나 비중·키워드 빈도는 정성 신호로 해석. 시장 규모 수치는 원본 소스 재확인 권장. 인사이트는 시장을 아는 분이 직접 검증해 주세요.
+  </div>
+
+</div>
+
+<script>
+  Chart.defaults.color = '#a8b0bb';
+  Chart.defaults.borderColor = '#23272d';
+  Chart.defaults.font.family = 'Pretendard, "Noto Sans KR", sans-serif';
+
+  // Growth chart
+  new Chart(document.getElementById('growthChart'), {
+    type: 'line',
+    data: {
+      labels: ['2023','2024','2025','2026','2027','2028','2029','2030','2031','2032'],
+      datasets: [{
+        label: '글로벌 무선 미니 체인소 (USD B)',
+        data: [1.5, 1.63, 1.78, 1.94, 2.11, 2.30, 2.50, 2.72, 2.96, 3.2],
+        borderColor: '#ff6b35',
+        backgroundColor: 'rgba(255,107,53,.15)',
+        fill: true,
+        tension: 0.35,
+        pointRadius: 3,
+        pointBackgroundColor: '#ff6b35'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins:{ legend: { display:false } },
+      scales: {
+        y: { beginAtZero: false, ticks:{callback:v=>'$'+v+'B'} },
+        x: { grid: { display:false } }
+      }
+    }
+  });
+
+  // Rating distribution
+  new Chart(document.getElementById('ratingChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['5★ (8건)','4★ (2건)','3★ (1건)','1★ (1건)'],
+      datasets: [{
+        data: [8,2,1,1],
+        backgroundColor: ['#3ddc97','#ffa75e','#f5a623','#ff5d6c'],
+        borderColor: '#0b0d10',
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { position: 'right' } },
+      cutout: '60%'
+    }
+  });
+
+  // Korea power tool share
+  new Chart(document.getElementById('shareChart'), {
+    type: 'bar',
+    data: {
+      labels: ['DeWalt','Bosch','Makita','Milwaukee','기타'],
+      datasets: [{
+        label: '판매금액 점유율 (%)',
+        data: [28.49, 22.27, 10.96, 10.79, 27.49],
+        backgroundColor: ['#ff6b35','#ffa75e','#f5a623','#3ddc97','#6b7380'],
+        borderRadius: 6
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: { display:false } },
+      scales: {
+        x: { ticks:{callback:v=>v+'%'} , grid: { color:'#1c2026' } },
+        y: { grid: { display:false } }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

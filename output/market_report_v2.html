@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>무선 전동공구 시장 — 종합 리서치 리포트</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1320;
+    --bg-soft: #161b2e;
+    --card: #1a2038;
+    --card-2: #222a47;
+    --line: #2a3257;
+    --ink: #eef0fb;
+    --ink-2: #b6bcd6;
+    --muted: #7d85a8;
+    --primary: #6366f1;
+    --primary-2: #8b5cf6;
+    --teal: #14b8a6;
+    --amber: #f59e0b;
+    --rose: #f43f5e;
+    --emerald: #10b981;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "SF Pro KR", "Apple SD Gothic Neo", sans-serif;
+    background: radial-gradient(circle at top right, #1a1f3a 0%, var(--bg) 50%);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 14.5px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 48px 28px 80px; }
+
+  header.hero {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 32px;
+    align-items: end;
+    padding: 36px 36px 32px;
+    background: linear-gradient(135deg, rgba(99,102,241,.18) 0%, rgba(139,92,246,.12) 100%);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    margin-bottom: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::after {
+    content: "";
+    position: absolute;
+    right: -120px; top: -120px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(139,92,246,.35), transparent 60%);
+    filter: blur(40px);
+    pointer-events: none;
+  }
+  .hero-top { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+  .badge-pill {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(99,102,241,.2);
+    border: 1px solid rgba(99,102,241,.4);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    color: #c7d0ff;
+  }
+  .badge-status {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(16,185,129,.14);
+    color: #6ee7b7;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  header.hero h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    background: linear-gradient(135deg, #fff 30%, #c7d0ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  header.hero .sub { color: var(--ink-2); margin-top: 8px; font-size: 14.5px; }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px;
+    font-size: 12.5px; color: var(--muted);
+  }
+
+  .kpi-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px;
+  }
+  .kpi {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 18px;
+    position: relative; overflow: hidden;
+  }
+  .kpi::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--primary); }
+  .kpi.k2::before { background: var(--teal); }
+  .kpi.k3::before { background: var(--amber); }
+  .kpi.k4::before { background: var(--emerald); }
+  .kpi .label {
+    font-size: 11px; font-weight: 700; letter-spacing: .06em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  .kpi .value { font-size: 26px; font-weight: 800; margin-top: 6px; letter-spacing: -0.01em; }
+  .kpi .delta {
+    font-size: 12px; font-weight: 600; color: var(--emerald); margin-top: 4px;
+  }
+
+  section.block {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 16px; padding: 26px 28px; margin-bottom: 18px;
+  }
+  section.block > h2 {
+    margin: 0 0 6px;
+    font-size: 18px; font-weight: 800; letter-spacing: -0.01em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  section.block > h2 .h-num {
+    font-family: ui-monospace, monospace; color: var(--primary); font-size: 12px;
+    background: rgba(99,102,241,.15); padding: 3px 8px; border-radius: 6px;
+  }
+  section.block > .lede { color: var(--ink-2); font-size: 13.5px; margin: 0 0 18px; }
+
+  .chart-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+  .chart-card { background: var(--card-2); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .chart-card h3 { margin: 0 0 4px; font-size: 13.5px; font-weight: 700; }
+  .chart-card .ch-sub { font-size: 11.5px; color: var(--muted); margin-bottom: 10px; }
+  .chart-canvas-wrap { position: relative; height: 240px; }
+
+  .trend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .trend-card {
+    background: var(--card-2); border: 1px solid var(--line);
+    border-radius: 12px; padding: 18px; position: relative;
+  }
+  .trend-card .rank {
+    position: absolute; top: 14px; right: 14px;
+    width: 28px; height: 28px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    color: #fff; font-weight: 800; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .trend-card .icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: rgba(99,102,241,.14); color: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 12px;
+  }
+  .trend-card h4 { margin: 0 0 8px; font-size: 15px; font-weight: 700; line-height: 1.4; padding-right: 36px; }
+  .trend-card p { margin: 0 0 10px; color: var(--ink-2); font-size: 13px; }
+  .trend-card .stat {
+    display: inline-flex; align-items: baseline; gap: 4px;
+    background: rgba(20,184,166,.12); color: #5eead4;
+    padding: 4px 10px; border-radius: 6px;
+    font-size: 12px; font-weight: 700; margin-right: 6px; margin-bottom: 4px;
+  }
+
+  table.compete { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.compete th, table.compete td {
+    padding: 12px 14px; text-align: left;
+    border-bottom: 1px solid var(--line); vertical-align: top;
+  }
+  table.compete th {
+    font-size: 11px; font-weight: 700; letter-spacing: .04em;
+    text-transform: uppercase; color: var(--muted); background: var(--card-2);
+  }
+  table.compete td.brand { font-weight: 700; color: var(--ink); font-size: 14px; }
+  table.compete .pos { color: #6ee7b7; }
+  table.compete .neg { color: #fda4af; }
+  .share-bar {
+    display: inline-block; width: 48px; height: 6px;
+    background: var(--line); border-radius: 3px; overflow: hidden;
+    margin-right: 6px; vertical-align: middle;
+  }
+  .share-bar i {
+    display: block; height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  }
+
+  .opp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .opp-card { background: var(--card-2); border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+  .opp-card .tag {
+    display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .04em;
+    padding: 3px 8px; border-radius: 5px;
+    background: rgba(245,158,11,.15); color: #fcd34d; margin-bottom: 10px;
+  }
+  .opp-card h4 { margin: 0 0 6px; font-size: 14px; font-weight: 700; }
+  .opp-card p { margin: 0; color: var(--ink-2); font-size: 12.5px; }
+  .opp-card .pulse {
+    margin-top: 12px; padding-top: 10px;
+    border-top: 1px dashed var(--line);
+    font-size: 12.5px; color: #5eead4; font-weight: 600;
+  }
+
+  .risk-grid { display: grid; gap: 10px; }
+  .risk-row {
+    display: grid; grid-template-columns: 36px 1.5fr 2.5fr 100px;
+    gap: 14px; align-items: center;
+    background: var(--card-2); border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .risk-num {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: rgba(244,63,94,.15); color: #fda4af;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px;
+  }
+  .risk-title { font-weight: 700; font-size: 13.5px; }
+  .risk-tag { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .risk-desc { color: var(--ink-2); font-size: 12.5px; line-height: 1.55; }
+  .severity { text-align: right; }
+  .sev-pill {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 800; letter-spacing: .04em;
+  }
+  .sev-critical { background: rgba(244,63,94,.18); color: #fda4af; }
+  .sev-high { background: rgba(245,158,11,.18); color: #fcd34d; }
+
+  .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; position: relative; }
+  .timeline::before {
+    content: ""; position: absolute; top: 26px; left: 5%; right: 5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-2) 50%, var(--teal) 100%);
+    opacity: .35;
+  }
+  .step { background: var(--card-2); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .step .dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    color: #fff; font-weight: 800; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    margin: -32px auto 8px; border: 4px solid var(--card);
+  }
+  .step .step-title {
+    text-align: center; font-weight: 700; font-size: 14px;
+    margin-bottom: 10px; line-height: 1.4;
+  }
+  .step ul { margin: 0; padding-left: 0; list-style: none; font-size: 12.5px; color: var(--ink-2); }
+  .step li {
+    padding: 5px 0; display: flex; gap: 8px;
+    border-top: 1px dashed var(--line);
+  }
+  .step li:first-child { border-top: 0; }
+  .step li b {
+    color: var(--ink); font-weight: 700; font-size: 11px;
+    background: rgba(99,102,241,.16); padding: 1px 7px; border-radius: 4px;
+    flex-shrink: 0; height: fit-content; margin-top: 1px;
+  }
+
+  .sources-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 14px; }
+  .src-row {
+    display: flex; gap: 10px; align-items: center;
+    padding: 10px 12px;
+    background: var(--card-2); border: 1px solid var(--line);
+    border-radius: 8px; font-size: 13px; color: var(--ink-2);
+  }
+  .src-tag {
+    display: inline-block; padding: 2px 7px; border-radius: 4px;
+    font-size: 10px; font-weight: 800; letter-spacing: .04em; flex-shrink: 0;
+  }
+  .src-pdf { background: rgba(244,63,94,.18); color: #fda4af; }
+  .src-url { background: rgba(20,184,166,.18); color: #5eead4; }
+  .src-txt { background: rgba(245,158,11,.18); color: #fcd34d; }
+  .src-row a { color: #c7d0ff; text-decoration: none; }
+  .src-row a:hover { text-decoration: underline; }
+
+  footer { text-align: center; color: var(--muted); font-size: 11.5px; margin-top: 32px; }
+  footer code { background: var(--card-2); padding: 1px 6px; border-radius: 4px; }
+
+  @media (max-width: 900px) {
+    header.hero, .chart-grid { grid-template-columns: 1fr; }
+    .kpi-strip, .trend-grid, .opp-grid, .timeline, .sources-grid { grid-template-columns: 1fr 1fr; }
+    .timeline::before { display: none; }
+  }
+  @media (max-width: 600px) {
+    .kpi-strip, .trend-grid, .opp-grid, .timeline, .sources-grid { grid-template-columns: 1fr; }
+    header.hero h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="hero">
+      <div>
+        <div class="hero-top">
+          <span class="badge-pill">NOTEBOOKLM × MCP RESEARCH</span>
+          <span class="badge-status">● 8 SOURCES</span>
+        </div>
+        <h1>무선 전동공구 시장<br>종합 리서치 리포트</h1>
+        <p class="sub">크래프트볼트 8인치 무선 미니 체인소 — 시장 / 경쟁 / 기회 / 리스크 / 액션</p>
+        <div class="hero-meta">
+          <span>📅 2026.05.07 생성</span>
+          <span>🤖 Gemini 2.5 via NotebookLM</span>
+          <span>📊 PDF 2 + 텍스트 1 + URL 3 + 스크린샷 2</span>
+        </div>
+      </div>
+      <div class="chart-canvas-wrap" style="height:200px"><canvas id="heroChart"></canvas></div>
+    </header>
+
+    <div class="kpi-strip">
+      <div class="kpi k1">
+        <div class="label">글로벌 시장 (2024)</div>
+        <div class="value">$12.2 B</div>
+        <div class="delta">↗ $22.9B by 2034 · CAGR 6.6%</div>
+      </div>
+      <div class="kpi k2">
+        <div class="label">한국 시장 (2024)</div>
+        <div class="value">1.10 조원</div>
+        <div class="delta">↗ 2019 대비 +35.2%</div>
+      </div>
+      <div class="kpi k3">
+        <div class="label">미니 체인소 CAGR</div>
+        <div class="value">8.9 %</div>
+        <div class="delta">$1.5B → $3.2B (2032)</div>
+      </div>
+      <div class="kpi k4">
+        <div class="label">DIY · 주거용 비중</div>
+        <div class="value">41 %</div>
+        <div class="delta">최대 세그먼트 · BLDC 39%</div>
+      </div>
+    </div>
+
+    <section class="block">
+      <h2><span class="h-num">01</span>시장 개요</h2>
+      <p class="lede">글로벌 무선 전동공구는 10년에 걸쳐 약 2배 성장 — 한국은 1조 원 벽 돌파, DIY가 성장 견인.</p>
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h3>글로벌 시장 규모 vs 미니 체인소 세그먼트</h3>
+          <div class="ch-sub">단위: USD Billion · GMI 2024 보고서 + 크래프트볼트 시장조사</div>
+          <div class="chart-canvas-wrap"><canvas id="marketLine"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>한국 vs DIY 시장 성장률</h3>
+          <div class="ch-sub">기준연도 = 100</div>
+          <div class="chart-canvas-wrap"><canvas id="koreaBar"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="h-num">02</span>주요 트렌드 Top 3</h2>
+      <p class="lede">DIY 폭발 · 배터리 플랫폼 록인 · 브러시리스 표준화 — 세 축이 시장 구조를 재편.</p>
+      <div class="trend-grid">
+        <div class="trend-card">
+          <div class="rank">1</div>
+          <div class="icon">🏠</div>
+          <h4>가정용·DIY 시장의 폭발적 성장</h4>
+          <p>건설·산업 → 일반 가정으로 소비층 확장. 글로벌 무선 전동공구의 41%가 주거용.</p>
+          <span class="stat">+44% DIY 지출 (US, 19→21)</span>
+          <span class="stat">18조원 한국 셀프인테리어</span>
+        </div>
+        <div class="trend-card">
+          <div class="rank">2</div>
+          <div class="icon">🔋</div>
+          <h4>배터리 플랫폼 통합 → Lock-in</h4>
+          <p>18V/21V 동일 배터리로 라인업 확장 → 추가 구매 시 동일 브랜드 재선택.</p>
+          <span class="stat">Bosch 18V Bluecore</span>
+          <span class="stat">DeWalt 20V MAX</span>
+        </div>
+        <div class="trend-card">
+          <div class="rank">3</div>
+          <div class="icon">⚡</div>
+          <h4>브러시리스 모터 표준화</h4>
+          <p>출력 +30%, 수명 2~3배, 발열·소음↓. 일부 시장 채택률 60% 돌파.</p>
+          <span class="stat">39% 글로벌 점유</span>
+          <span class="stat">60%+ 일부 시장</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="h-num">03</span>경쟁 환경</h2>
+      <p class="lede">한국 시장은 보쉬·디월트·밀워키 3강 + 저가 중국 OEM. 글로벌 프리미엄 3사 모두 KC 인증·국내 A/S 약점.</p>
+
+      <div class="chart-grid" style="margin-bottom: 18px;">
+        <div class="chart-card">
+          <h3>한국 시장 점유율 — 판매금액 vs 판매량</h3>
+          <div class="ch-sub">상위 브랜드 (단위: %)</div>
+          <div class="chart-canvas-wrap"><canvas id="shareChart"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>가격 vs 가동시간 포지셔닝</h3>
+          <div class="ch-sub">8인치 미니 체인소 기준 (USD)</div>
+          <div class="chart-canvas-wrap"><canvas id="priceChart"></canvas></div>
+        </div>
+      </div>
+
+      <table class="compete">
+        <thead>
+          <tr>
+            <th>브랜드</th>
+            <th>점유 / 시그니처</th>
+            <th class="pos">강점</th>
+            <th class="neg">약점</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="brand">Bosch</td>
+            <td>
+              <span class="share-bar"><i style="width:78%"></i></span> 21.98%<br>
+              <small style="color:var(--muted)">판매량 1위 · 18V Bluecore</small>
+            </td>
+            <td class="pos">대중 인지도 압도, 라인업 호환성</td>
+            <td class="neg">한국 A/S 제한, 가정용 대응 약함</td>
+          </tr>
+          <tr>
+            <td class="brand">DeWalt</td>
+            <td>
+              <span class="share-bar"><i style="width:100%"></i></span> 28.49%<br>
+              <small style="color:var(--muted)">판매금액 1위 · 20V MAX</small>
+            </td>
+            <td class="pos">프리미엄 선두, 8인치 가동 30~40분</td>
+            <td class="neg">$200+ 진입장벽, A/S 제한</td>
+          </tr>
+          <tr>
+            <td class="brand">Milwaukee</td>
+            <td>
+              <span class="share-bar"><i style="width:55%"></i></span> N/A<br>
+              <small style="color:var(--muted)">M18 FUEL · 전문가 1위</small>
+            </td>
+            <td class="pos">최고 기술력, 45분+ 가동시간</td>
+            <td class="neg">$250+ 가격, KC 인증 부재</td>
+          </tr>
+          <tr>
+            <td class="brand">Chinese OEM</td>
+            <td>
+              <span class="share-bar"><i style="width:32%"></i></span> 저가 다수<br>
+              <small style="color:var(--muted)">$50~$100 · 브러시드 모터</small>
+            </td>
+            <td class="pos">가격 경쟁력</td>
+            <td class="neg">15~25분 가동, KC·A/S 부재</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="block">
+      <h2><span class="h-num">04</span>기회 요인</h2>
+      <p class="lede">아시아 9%↑ 성장, 친환경 규제, 미들 가격대 공백 — 후발주자에 유리한 3대 신호.</p>
+      <div class="opp-grid">
+        <div class="opp-card">
+          <span class="tag">GROWTH</span>
+          <h4>APAC 미니 체인소 9%+ CAGR</h4>
+          <p>아시아 태평양 무선 체인소 성장률은 글로벌 평균 8.9% 상회. 후발 진입과 라인업 확장에 우호.</p>
+          <div class="pulse">▶ 글로벌 DIY 시장 89.6억$ (2024)</div>
+        </div>
+        <div class="opp-card">
+          <span class="tag">REGULATION</span>
+          <h4>도심 저소음·친환경 규제</h4>
+          <p>가솔린 100dB+ 체인소는 도심 사용 제한. 무선 80dB 수준이 규제 회피 + 작업 시간대 확장.</p>
+          <div class="pulse">▶ 한국·일본·EU 모두 동일 방향</div>
+        </div>
+        <div class="opp-card">
+          <span class="tag">PRICE-GAP</span>
+          <h4>$120~$250 미들 가격대 공백</h4>
+          <p>저가 OEM($50~$100, 성능·A/S↓) ↔ 글로벌 프리미엄($200+, A/S 제한). 그 사이가 비어있음.</p>
+          <div class="pulse">▶ 고성능 + 국내 A/S 결합 포지션</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="h-num">05</span>리스크</h2>
+      <p class="lede">시장(빅브랜드 진입)·공급망(중국 OEM 의존)·기술(배터리 안전) 3축 리스크 평가.</p>
+      <div class="risk-grid">
+        <div class="risk-row">
+          <div class="risk-num">1</div>
+          <div>
+            <div class="risk-title">글로벌 빅브랜드 한국 진출</div>
+            <div class="risk-tag">시장 · 배터리 록인 부재</div>
+          </div>
+          <div class="risk-desc">단일 모델 라인업으로 추가 공구 구매 유도 약함. 보쉬·디월트가 한국 본격 진입 시 인지도·플랫폼 호환성에서 우위 상실 가능.</div>
+          <div class="severity"><span class="sev-pill sev-high">HIGH</span></div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-num">2</div>
+          <div>
+            <div class="risk-title">중국 OEM 의존 + KC 우회 직구</div>
+            <div class="risk-tag">규제 / 공급망</div>
+          </div>
+          <div class="risk-desc">전량 중국 OEM 생산 → 관세·환율·재고 리스크. KC 미인증 제품의 해외 직구 유입 시 가격 민감 고객 이탈 우려.</div>
+          <div class="severity"><span class="sev-pill sev-high">M~HIGH</span></div>
+        </div>
+        <div class="risk-row">
+          <div class="risk-num">3</div>
+          <div>
+            <div class="risk-title">리튬이온 배터리 발열·발화</div>
+            <div class="risk-tag">기술 · 안전</div>
+          </div>
+          <div class="risk-desc">0°C 미만 / 45°C 초과 충전, 4시간 이상 과충전 시 발화 가능. 단 1건의 사고로도 브랜드 신뢰 회복 불가.</div>
+          <div class="severity"><span class="sev-pill sev-critical">CRITICAL</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="h-num">06</span>액션 플랜 — 다음 분기</h2>
+      <p class="lede">유입(인플루언서) → 전환(상세페이지) → 확장(검색광고) 3단계 퍼널.</p>
+      <div class="timeline">
+        <div class="step">
+          <div class="dot">1</div>
+          <div class="step-title">유튜브 인플루언서 시딩</div>
+          <ul>
+            <li><b>대상</b>DIY · 원예 · 캠핑 채널 5인</li>
+            <li><b>KPI</b>리뷰 5건 · 누적 50만 조회</li>
+            <li><b>근거</b>주거용 41% · 콘텐츠 확산</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="dot">2</div>
+          <div class="step-title">이커머스 상세페이지 리뉴얼</div>
+          <ul>
+            <li><b>채널</b>쿠팡 · 11번가</li>
+            <li><b>KPI</b>전환율 +20%</li>
+            <li><b>후킹</b>800W BLDC · KC · 1년 A/S</li>
+          </ul>
+        </div>
+        <div class="step">
+          <div class="dot">3</div>
+          <div class="step-title">네이버 검색 광고 (SA)</div>
+          <ul>
+            <li><b>키워드</b>"무선 전기톱", "8인치 미니 체인소"</li>
+            <li><b>KPI</b>CTR 3%↑ · CPA 5만원↓</li>
+            <li><b>역할</b>인플루언서 환기 수요 흡수</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="h-num">07</span>사용된 소스 (8건)</h2>
+      <p class="lede">PDF 2건 + 텍스트 1건 + URL 3건 + 스크린샷 2건. 신규 URL 3건은 NotebookLM MCP로 자동 추가.</p>
+      <div class="sources-grid">
+        <div class="src-row"><span class="src-tag src-pdf">PDF</span> 크래프트볼트_시장조사_리포트.pdf</div>
+        <div class="src-row"><span class="src-tag src-pdf">PDF</span> ★ 최종 전기톱 사용설명서 시안.pdf</div>
+        <div class="src-row"><span class="src-tag src-txt">TEXT</span> 쿠팡 사용자 리뷰 (스크린샷 3종)</div>
+        <div class="src-row"><span class="src-tag src-url">URL</span> <a href="https://www.protoolreviews.com/best-mini-chainsaw/" target="_blank">Pro Tool Reviews — Best Mini Chainsaw</a></div>
+        <div class="src-row"><span class="src-tag src-url">URL</span> <a href="https://www.gminsights.com/industry-analysis/cordless-power-tools-market" target="_blank">GMI — Cordless Power Tools 2025-2034</a></div>
+        <div class="src-row"><span class="src-tag src-url">URL</span> <a href="https://www.gagune.com/2025-홈-인테리어-시장-핵심-트렌드/" target="_blank">가구네 — 2025 홈 인테리어 트렌드</a></div>
+      </div>
+    </section>
+
+    <footer>
+      Generated by <code>scripts/auto-report.mjs</code> + <code>scripts/build-html.mjs</code> · NotebookLM MCP Agent · Gemini 2.5
+    </footer>
+
+  </div>
+
+<script>
+  Chart.defaults.color = '#b6bcd6';
+  Chart.defaults.font.family = '-apple-system, "Pretendard", "Apple SD Gothic Neo", sans-serif';
+  Chart.defaults.font.size = 11;
+  const grid = '#2a3257';
+
+  new Chart(document.getElementById('heroChart'), {
+    type: 'line',
+    data: {
+      labels: ['2024','2026','2028','2030','2032','2034'],
+      datasets: [{
+        data: [12.2, 13.9, 15.8, 18.0, 20.4, 22.9],
+        borderColor: '#a78bfa',
+        backgroundColor: 'rgba(167,139,250,.18)',
+        borderWidth: 2.5, fill: true, tension: .35,
+        pointRadius: 0, pointHoverRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { displayColors: false, callbacks: { label: ctx => `$${ctx.parsed.y}B` } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#9ea4be' } },
+        y: { grid: { color: 'rgba(255,255,255,.05)' }, ticks: { color: '#9ea4be', callback: v => '$' + v + 'B' } }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('marketLine'), {
+    type: 'line',
+    data: {
+      labels: ['2024','2026','2028','2030','2032','2034'],
+      datasets: [{
+        label: '글로벌 무선 전동공구 ($B)',
+        data: [12.2, 13.9, 15.8, 18.0, 20.4, 22.9],
+        borderColor: '#6366f1',
+        backgroundColor: 'rgba(99,102,241,.16)',
+        fill: true, tension: .35,
+        pointBackgroundColor: '#fff', pointBorderColor: '#6366f1', pointBorderWidth: 2, pointRadius: 4,
+      },{
+        label: '미니 체인소 ($B)',
+        data: [1.5, 1.78, 2.1, 2.5, 2.95, 3.5],
+        borderColor: '#14b8a6',
+        backgroundColor: 'transparent',
+        borderDash: [4,4], tension: .3,
+        pointRadius: 3, pointBackgroundColor: '#14b8a6',
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 12 } } },
+      scales: {
+        x: { grid: { color: grid }, ticks: { color: '#9ea4be' } },
+        y: { grid: { color: grid }, ticks: { color: '#9ea4be', callback: v => '$' + v + 'B' } }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('koreaBar'), {
+    type: 'bar',
+    data: {
+      labels: ['한국 전동공구\n(2019→24)', '한국 셀프인테리어\n(2015→23)', '미국 DIY 지출\n(2019→21)'],
+      datasets: [{
+        data: [135.2, 144, 144],
+        backgroundColor: ['rgba(20,184,166,.85)','rgba(99,102,241,.85)','rgba(245,158,11,.85)'],
+        borderRadius: 6, borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { displayColors: false, callbacks: { label: ctx => `+${(ctx.parsed.y - 100).toFixed(1)}% growth` } } },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: '#9ea4be', font: { size: 10 } } },
+        y: { grid: { color: grid }, ticks: { color: '#9ea4be' }, suggestedMin: 100, suggestedMax: 150 }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('shareChart'), {
+    type: 'bar',
+    data: {
+      labels: ['DeWalt','Bosch','Milwaukee','기타'],
+      datasets: [
+        { label: '판매금액 %', data: [28.49, 18, 12, 41.51], backgroundColor: 'rgba(99,102,241,.85)', borderRadius: 4 },
+        { label: '판매량 %',   data: [22, 21.98, 8, 48.02], backgroundColor: 'rgba(20,184,166,.85)', borderRadius: 4 },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, padding: 12 } } },
+      scales: {
+        x: { grid: { color: grid }, ticks: { color: '#9ea4be', callback: v => v + '%' } },
+        y: { grid: { display: false }, ticks: { color: '#9ea4be' } }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('priceChart'), {
+    type: 'bubble',
+    data: {
+      datasets: [
+        { label: '저가 OEM',          data: [{x: 75,  y: 20, r: 16}], backgroundColor: 'rgba(244,63,94,.7)' },
+        { label: '크래프트볼트 (제안)', data: [{x: 200, y: 70, r: 22}], backgroundColor: 'rgba(99,102,241,.85)' },
+        { label: 'Bosch / DeWalt',    data: [{x: 250, y: 55, r: 18}], backgroundColor: 'rgba(20,184,166,.7)' },
+        { label: 'Milwaukee',         data: [{x: 320, y: 48, r: 18}], backgroundColor: 'rgba(245,158,11,.7)' },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 10, padding: 10, font: { size: 10 } } },
+        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label} · $${ctx.raw.x} · 가동 ${ctx.raw.y}분` } }
+      },
+      scales: {
+        x: { grid: { color: grid }, ticks: { color: '#9ea4be', callback: v => '$' + v }, title: { display: true, text: '가격 (USD)', color: '#9ea4be' } },
+        y: { grid: { color: grid }, ticks: { color: '#9ea4be', callback: v => v + '분' }, title: { display: true, text: '1회 충전 가동시간', color: '#9ea4be' }, suggestedMin: 0, suggestedMax: 90 }
+      }
+    }
+  });
+</script>
+</body>
+</html>

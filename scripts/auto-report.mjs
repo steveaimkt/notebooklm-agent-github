@@ -79,7 +79,7 @@ server.stdout.on('data', (data) => {
 
 server.stderr.on('data', () => {});
 
-function send(method, params = {}, timeoutMs = 180000) {
+function send(method, params = {}, timeoutMs = 480000) {
   return new Promise((resolve, reject) => {
     const id = ++msgId;
     const timer = setTimeout(() => {
@@ -96,7 +96,7 @@ function extractAnswer(res) {
   if (!text) return '(응답 없음)';
   try {
     const parsed = JSON.parse(text);
-    return parsed.answer || text;
+    return parsed.data?.answer || parsed.answer || text;
   } catch {
     return text;
   }
@@ -120,7 +120,11 @@ function extractAnswer(res) {
     const s = SECTIONS[i];
     console.log(`[${i + 1}/${SECTIONS.length}] ${s.title} ...`);
 
-    const args = { question: s.question };
+    const args = {
+      question: s.question,
+      show_browser: true,
+      browser_options: { show: true, headless: false, timeout_ms: 60000 }
+    };
     if (notebookUrl) args.notebook_url = notebookUrl;
     if (sessionId) args.session_id = sessionId;
 
@@ -132,7 +136,8 @@ function extractAnswer(res) {
       const text = res.result?.content?.[0]?.text;
       try {
         const parsed = JSON.parse(text);
-        if (parsed.session_id) sessionId = parsed.session_id;
+        const sid = parsed.data?.session_id || parsed.session_id;
+        if (sid) sessionId = sid;
       } catch {}
     }
 

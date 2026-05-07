@@ -54,8 +54,8 @@ function send(method, params = {}) {
     const id = ++msgId;
     const timer = setTimeout(() => {
       pending.delete(id);
-      reject(new Error('타임아웃 (3분)'));
-    }, 180000);
+      reject(new Error('타임아웃 (8분)'));
+    }, 480000);
     pending.set(id, (res) => { clearTimeout(timer); resolve(res); });
     server.stdin.write(JSON.stringify({ jsonrpc: '2.0', id, method, params }) + '\n');
   });
@@ -70,7 +70,11 @@ function send(method, params = {}) {
 
   console.log(`❓ ${question}\n⏳ NotebookLM 응답 대기...\n`);
 
-  const args = { question };
+  const args = {
+    question,
+    show_browser: true,
+    browser_options: { show: true, headless: false, timeout_ms: 60000 }
+  };
   if (notebookUrl) args.notebook_url = notebookUrl;
 
   const res = await send('tools/call', { name: 'ask_question', arguments: args });

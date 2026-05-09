@@ -14,5 +14,9 @@
     "health": "node scripts/health-check.mjs",
     "ask": "node scripts/ask.mjs"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "patchright": "^1.59.4",
+    "turndown": "^7.2.4"
+  }
 }

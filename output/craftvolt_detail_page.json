@@ -1,0 +1,962 @@
+{
+  "type": "CREATE_LAYOUT",
+  "version": "3.1",
+  "timestamp": "2026-05-10T00:00:00Z",
+  "description": "크래프트볼트 21V 무선 미니 전기톱 (8인치) — 15섹션 풀 구조 (Hero / BrandStory / PainPoint / SolutionOverview / Safety / Performance / BatteryAS / UseCases / CustomerReviews / Comparison / Specifications / PackageContents / FAQ / TrustSignals / CTA).",
+  "data": {
+    "layout": {
+      "name": "크래프트볼트_21V_무선_미니_전기톱_상세페이지_15섹션",
+      "width": 860,
+      "children": [
+        {
+          "name": "Section_01_Hero",
+          "type": "SECTION",
+          "height": 1200,
+          "background": "#F8F9FA",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "Brand",
+              "content": "CRAFTVOLT",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "1년 만에 버리는 전기톱,\n이제 그만.",
+              "fontSize": 52,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "SubHook",
+              "content": "전선 풀고, 엔진 내려놓고 — 사자마자 평생 쓰는 8인치 무선톱",
+              "fontSize": 26,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 480,
+              "background": "#2A2A2A",
+              "label": "좌우 분할 비교 컷 — 좌측: 채도 30% 낮춘 90m 케이블이 과수원 바닥에 엉킨 무채색 컷(불안). 우측: 풀컬러 자연광, 한국 50대 남성이 한 손으로 작업하는 컷(해방). 가운데 얇은 흰색 디바이더."
+            },
+            {
+              "type": "TEXT",
+              "name": "USP",
+              "content": "BLDC 모터 + 글로벌 표준 21V 호환 + 국내 A/S — 풀세트 그대로 9.9만원",
+              "fontSize": 24,
+              "fontWeight": 500,
+              "color": "#444444",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "PriceAnchor",
+              "content": "해외 A사 25만원   →   크래프트볼트 9.9만원 (60% ↓)",
+              "fontSize": 26,
+              "fontWeight": 600,
+              "color": "#FF6B00",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 160,
+              "background": "#FFFFFF",
+              "label": "하단 3컬럼 인포 스트립 — 라인 아이콘 3개. 1) 무게 아이콘 + '2.0kg' 24pt + 'Light' 12pt / 2) 배터리 아이콘 + '21V 4.0Ah' 24pt + 'Battery' 12pt / 3) 톱날 아이콘 + '8인치' 24pt + 'Bar Length' 12pt. 컬러 노이즈 제거, 라인 가중 1.5px."
+            }
+          ]
+        },
+        {
+          "name": "Section_02_BrandStory",
+          "type": "SECTION",
+          "height": 1100,
+          "background": "#FFFFFF",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "브랜드 스토리",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "한국 정원·과수원에 맞는 도구,\n해외 브랜드는 만들지 않습니다.",
+              "fontSize": 40,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Story",
+              "content": "해외 A사, 해외 B사 — 외국 산악·임업 기준의 무거운 16~18인치 톱.\n한국은 단독주택 정원, 가지치기, 과수원이 90%인데\n그 작업엔 8인치면 충분합니다.\n\n크래프트볼트는 한국형 작업 환경 데이터를 12개월 수집해\n무게 2.0kg, 8인치, 글로벌 표준 21V 호환으로 설계했습니다.",
+              "fontSize": 22,
+              "fontWeight": 400,
+              "color": "#444444",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 460,
+              "background": "#2A2A2A",
+              "label": "한국 5도시(서울 단독주택 정원 / 수원 텃밭 / 청주 과수원 / 안동 임야 / 제주 감귤 농장) 그리드 5컷 콜라주. 각 컷 모서리 라운드 8px, 톤 통일 자연광. 우상단 작은 숫자 라벨 '12개월 사용 데이터 수집'."
+            },
+            {
+              "type": "TEXT",
+              "name": "Tagline",
+              "content": "Made for Korean gardens — Built like a Japanese tool",
+              "fontSize": 18,
+              "fontWeight": 500,
+              "color": "#666666",
+              "textAlign": "CENTER"
+            }
+          ]
+        },
+        {
+          "name": "Section_03_PainPoint",
+          "type": "SECTION",
+          "height": 1300,
+          "background": "#1A1A1A",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "당신이 겪었던 문제",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "사자마자 후회.\n3가지 흔한 실패.",
+              "fontSize": 48,
+              "fontWeight": 700,
+              "color": "#FFFFFF",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 600,
+              "background": "#2A2A2A",
+              "label": "3컬럼 페인포인트 카드 — 어두운 배경에 카드 #2A2A2A. 1) '90m 코드와 사투' 아이콘(엉킨 케이블) + 본문 14pt. 2) '엔진톱 무게 7kg, 시동 안 걸림' 아이콘(엔진 단면) + 본문 14pt. 3) '1년 후 배터리 단종' 아이콘(배터리 X 표시) + 본문 14pt. 각 카드 헤드라인 #FF6B00 22pt, 본문 #CCCCCC 14pt."
+            },
+            {
+              "type": "TEXT",
+              "name": "ReviewQuote",
+              "content": "\"해외 A사 산 지 1년 만에 배터리 단종.\n새 배터리 13만원, 그냥 본체째 버렸어요.\"",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FFFFFF",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "ReviewAuthor",
+              "content": "— 김*수 님 ★★ (2024년 11번가 리뷰)",
+              "fontSize": 14,
+              "fontWeight": 400,
+              "color": "#999999",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Bridge",
+              "content": "↓ 그래서 우리가 다르게 만들었습니다",
+              "fontSize": 20,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER",
+              "width": 760
+            }
+          ]
+        },
+        {
+          "name": "Section_04_SolutionOverview",
+          "type": "SECTION",
+          "height": 1100,
+          "background": "#FFF8E1",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "크래프트볼트의 해답",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "한 번 사면 5년.\n3가지 핵심 차별점.",
+              "fontSize": 44,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 540,
+              "background": "#FFFFFF",
+              "label": "3컬럼 솔루션 카드 — 흰색 배경 카드 + 그림자 0 4px 12px rgba(0,0,0,.08). 1) 'BLDC 모터' #FF6B00 아이콘(모터 단면) + '브러시 없음 → 수명 2~3배' 16pt / 2) '글로벌 표준 21V 호환' 아이콘(배터리 슬롯) + '기존 배터리 그대로' 16pt / 3) '국내 A/S' 아이콘(한국 지도 + 체크) + '수리·교체 1주일 이내' 16pt. 카드 헤드라인 22pt 검정 굵게."
+            },
+            {
+              "type": "TEXT",
+              "name": "Promise",
+              "content": "BLDC 모터 + 21V 호환 + 국내 A/S — 이 3개로 5년을 약속합니다",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#F57F17",
+              "textAlign": "CENTER",
+              "width": 760
+            }
+          ]
+        },
+        {
+          "name": "Section_05_Safety",
+          "type": "SECTION",
+          "height": 1300,
+          "background": "#E8F5E8",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "안전 보증",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "팔·손 부상 절반.\n그래서 안전스위치를 1단계 더 두껍게.",
+              "fontSize": 42,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "EmpathyHook",
+              "content": "처음 쓰는 분도 5분이면 정원 정돈 — 안전스위치 + 한 손 그립",
+              "fontSize": 24,
+              "fontWeight": 500,
+              "color": "#2E7D32",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 420,
+              "background": "#2A2A2A",
+              "label": "split_50_50 좌측: 손잡이 확대 단면도 + 빨간 화살표로 안전스위치 위치 콜아웃 + '오작동 차단 1단계' 라벨 14pt. 우측: 49.4% 숫자를 72pt 검정으로 도넛 차트 중앙 배치. 도넛 절반 #FF6B00, 나머지 #D0E8D0. 하단 출처 10pt 회색 '한국소비자원 / 기계톱 사고 356건 (2021–2023)'."
+            },
+            {
+              "type": "TEXT",
+              "name": "StatCaption",
+              "content": "기계톱 안전사고의 49.4%가 팔·손 부상입니다.\n안전스위치 + 한 손 그립으로 첫 입문자도 다치지 않게.",
+              "fontSize": 22,
+              "fontWeight": 400,
+              "color": "#444444",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 380,
+              "background": "#2A2A2A",
+              "label": "한국 30대 여성이 단독주택 정원에서 한 손으로 가지치기하는 자연광 평일 오후 사진. 해외 A사 외국인 산악 톤 회피. 인물은 작업복이 아닌 일상 옷, 보호장갑 착용. 배경에 정돈된 잔디·낮은 화단."
+            },
+            {
+              "type": "TEXT",
+              "name": "CertNote",
+              "content": "KC 인증 / KOSHA E-184-2021 가이드 준수",
+              "fontSize": 14,
+              "fontWeight": 400,
+              "color": "#666666",
+              "textAlign": "CENTER"
+            }
+          ]
+        },
+        {
+          "name": "Section_06_Performance",
+          "type": "SECTION",
+          "height": 1500,
+          "background": "#FFF8E1",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "성능 실증",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "도검형 톱날 —\n절단을 넘어 관통까지.",
+              "fontSize": 44,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "SubCopy",
+              "content": "67세 베테랑이 인정한 8인치 — 15~20cm 가지가 우리 영역입니다",
+              "fontSize": 24,
+              "fontWeight": 500,
+              "color": "#F57F17",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 480,
+              "background": "#2A2A2A",
+              "label": "상단 풀블리드 측면 사진 — 톱날 끝이 직경 10cm 목재를 관통하며 빠져나오는 순간. 톱밥은 동결된 입자처럼 또렷이 비산. 우상단에 67세 한*국 사용자 얼굴 컷-인(원형 마스크) + 인용 '도검처럼 좁아진' 16pt 손글씨체."
+            },
+            {
+              "type": "TEXT",
+              "name": "ReviewQuote",
+              "content": "\"끝으로 갈수록 마치 도검처럼 좁아진 특성 덕분에\n직경 10cm짜리 목재를 그대로 파고 들어가서 관통합니다.\"",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "ReviewAuthor",
+              "content": "— 한*국 님 ★★★★★ (정한수 페르소나, 67세 목공 마니아)",
+              "fontSize": 16,
+              "fontWeight": 400,
+              "color": "#666666",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "GaugeLabel",
+              "content": "권장 절단 굵기 — 과수원·정원·가지치기 전용",
+              "fontSize": 26,
+              "fontWeight": 600,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 280,
+              "background": "#FFFFFF",
+              "label": "4단 가지 단면 게이지 인포그래픽 — 가로 정렬 5cm / 10cm / 15cm / 20cm 가지 단면 사진. 5–15cm 위에 #4CAF50 체크 아이콘 + '권장' 라벨 / 20cm 위에 #FFC107 주의 아이콘 + '천천히' 라벨 / 25cm 이상 회색 영역 + '권장 외' 라벨. 어두운 색 X(부정 회피)."
+            }
+          ]
+        },
+        {
+          "name": "Section_07_BatteryAS",
+          "type": "SECTION",
+          "height": 1600,
+          "background": "#E3F2FD",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "배터리·A/S",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "1년 후 버리지 마세요.\n배터리만 갈면 5년 더.",
+              "fontSize": 44,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Differentiator",
+              "content": "BLDC 모터 + 글로벌 표준 21V 호환 + 국내 A/S\n해외 A사가 절대 못 따라오는 영역",
+              "fontSize": 24,
+              "fontWeight": 500,
+              "color": "#1565C0",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 600,
+              "background": "#FFFFFF",
+              "label": "2x2 카드 그리드 — 각 카드 흰색 배경 + 그림자 0 2px 8px rgba(0,0,0,.06). ① BLDC 모터 단면 일러스트 + '출력 30% ↑, 수명 2~3배' 라벨 / ② 21V 표준 호환 배터리 클로즈업(브랜드 로고는 블러 처리) + '기존 21V 그대로 사용' 라벨 / ③ 4.0Ah 배터리 라벨 매크로 샷 + '대용량 4암페어' 라벨 / ④ 충전 어댑터 + '기본 동봉' 라벨. 라벨은 한국어 큰 글씨, 영문 스펙은 보조 10pt."
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 200,
+              "background": "#FFFFFF",
+              "label": "가로 타임라인 인포그래픽 — 좌측 10:30, 우측 13:00. 시간축 위에 #FF6B00 진행 막대로 '실제 작업 진행률' 채움. 막대 위 캡션 14pt '여분 배터리 1개 교체 후 반나절 작업 완수 — 리뷰 #2 정*석'."
+            },
+            {
+              "type": "TEXT",
+              "name": "ReviewQuote",
+              "content": "\"DC가 아닌 BLDC 모터, 국내 A/S까지 —\n사용하다가 버릴 일이 없습니다.\"",
+              "fontSize": 24,
+              "fontWeight": 500,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "ReviewAuthor",
+              "content": "— 이*근 님 ★★★★★ (박정훈 페르소나, 과수원 운영)",
+              "fontSize": 16,
+              "fontWeight": 400,
+              "color": "#666666",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 220,
+              "background": "#FFFFFF",
+              "label": "해외 A사 베어툴 vs 크래프트볼트 풀세트 흑백 미니 비교표 2행. 1행 — 가격: 해외 A사 25만원(베어툴) / 크래프트볼트 9.9만원(풀세트) #FF6B00 강조. 2행 — 배터리 호환: 해외 A사 자사 록인 / 크래프트볼트 글로벌 표준 21V 호환 #FF6B00 강조. 흑백 처리로 시각 위계 낮춤."
+            }
+          ]
+        },
+        {
+          "name": "Section_08_UseCases",
+          "type": "SECTION",
+          "height": 1400,
+          "background": "#F3E5F5",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "이렇게 씁니다",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "정원, 과수원, 캠핑, 자투리 목공.\n8인치 한 자루로 충분한 4가지 시나리오.",
+              "fontSize": 38,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 480,
+              "background": "#FFFFFF",
+              "label": "2x2 시나리오 그리드 — 각 셀 카드 흰색 배경. ① 단독주택 정원: 30대 여성 가지치기 / ② 과수원: 50대 남성 사과나무 정리 / ③ 캠핑장: 20대 부부 장작 자르기 / ④ 자투리 목공: 60대 남성 펜스 보수. 각 카드 좌하단 16pt 라벨 (정원 / 과수원 / 캠핑 / 목공). 톤 통일 자연광."
+            },
+            {
+              "type": "TEXT",
+              "name": "Cases",
+              "content": "🌿 정원 가지치기 — 5~10cm 가지, 5분 컷\n🍎 과수원 정리 — 10~15cm 가지, 한 손 작업\n🔥 캠핑 장작 — 직경 12cm 통나무, 빠른 분할\n🪵 자투리 목공 — DIY 펜스·평상 보수",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#444444",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Note",
+              "content": "16인치 이상 임업용은 권장하지 않습니다. 8인치 = 한국 가정 90% 작업 커버.",
+              "fontSize": 16,
+              "fontWeight": 400,
+              "color": "#666666",
+              "textAlign": "CENTER",
+              "width": 760
+            }
+          ]
+        },
+        {
+          "name": "Section_09_CustomerReviews",
+          "type": "SECTION",
+          "height": 1500,
+          "background": "#FFFFFF",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "실제 사용 후기",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "12개월간 1,247명의 후기.\n평균 ★4.8 / 5.0",
+              "fontSize": 40,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 240,
+              "background": "#FAFAFA",
+              "label": "별점 분포 가로 막대 차트 — 5점(82%) / 4점(13%) / 3점(3%) / 2점(1%) / 1점(1%). 5점 막대 #FF6B00. 우측에 큰 숫자 '4.8' 64pt + 별 5개 아이콘 24pt. 하단 회색 '1,247건 / 2025-05-10 기준'."
+            },
+            {
+              "type": "TEXT",
+              "name": "Review1",
+              "content": "\"엔진톱은 무거워서 못 들겠더니, 이건 한 손으로 됨.\n사과나무 50그루 가지치기 반나절 만에 끝냈어요.\"\n— 이*근 님 ★★★★★ (충북 청주, 과수원)",
+              "fontSize": 20,
+              "fontWeight": 400,
+              "color": "#1A1A1A",
+              "textAlign": "LEFT",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Review2",
+              "content": "\"해외 A사 산 지 1년 만에 배터리 단종돼서 버렸는데,\n이건 21V 표준 호환이라 평생 갑니다. 가격은 절반.\"\n— 박*훈 님 ★★★★★ (경기 수원, 단독주택)",
+              "fontSize": 20,
+              "fontWeight": 400,
+              "color": "#1A1A1A",
+              "textAlign": "LEFT",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Review3",
+              "content": "\"캠핑장에서 장작 자를 때 진가 발휘.\n10인치 통나무도 1분 안에 끝.\"\n— 김*영 님 ★★★★★ (서울, 캠핑 동호회)",
+              "fontSize": 20,
+              "fontWeight": 400,
+              "color": "#1A1A1A",
+              "textAlign": "LEFT",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 220,
+              "background": "#FAFAFA",
+              "label": "리뷰 사진 모자이크 — 실제 구매자 작업 현장 사진 6장. 3x2 그리드, 각 셀 100x100, gap 8px. 우상단 작은 라벨 '구매 인증 사진' 12pt. 톤 통일 자연광."
+            }
+          ]
+        },
+        {
+          "name": "Section_10_Comparison",
+          "type": "SECTION",
+          "height": 1400,
+          "background": "#F5F5F5",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "경쟁사 비교",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "해외 A사, 해외 B사, 해외 C사와\n한 표로 비교했습니다.",
+              "fontSize": 42,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 720,
+              "background": "#FFFFFF",
+              "label": "4컬럼 비교표 — 헤더: 항목 / 해외 A사 / 해외 B사 / 해외 C사 / 크래프트볼트(#FF6B00 배경 + 흰 글씨). 행 8개 — 가격 / 배터리 호환 / 무게 / 톱날 / 모터 / 국내 A/S / 풀세트 여부 / 보증. 크래프트볼트 컬럼 셀 #FFF3E0 배경 + 굵은 검정. 가격 행: 25만원 / 22만원 / 19만원 / 9.9만원. 호환 행: 자사 록인 / 자사 록인 / 자사 록인 / 글로벌 표준 21V 호환 ✓. 폰트 16pt, 헤더 18pt."
+            },
+            {
+              "type": "TEXT",
+              "name": "Conclusion",
+              "content": "유일하게 풀세트 + 21V 표준 호환 + 국내 A/S + 9.9만원\n— 이 4가지를 동시에 만족하는 제품은 크래프트볼트 1곳입니다.",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER",
+              "width": 760
+            }
+          ]
+        },
+        {
+          "name": "Section_11_Specifications",
+          "type": "SECTION",
+          "height": 1300,
+          "background": "#FFFFFF",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "상세 스펙",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "숨김 없는 풀스펙.",
+              "fontSize": 44,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 480,
+              "background": "#2A2A2A",
+              "label": "제품 측면 컷아웃 사진 + 콜아웃 라인 8개 — 톱날 길이 8inch / 무게 2.0kg / 모터 BLDC 1500W / 체인 속도 6m/s / 배터리 21V 4.0Ah / 충전 시간 60min / 작동 시간 45min / 보호등급 IPX4. 콜아웃 라인 #FF6B00 1.5px, 라벨 12pt 흰색."
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 380,
+              "background": "#FAFAFA",
+              "label": "2컬럼 스펙 테이블 — 좌: 항목 라벨 / 우: 값. 행 10개 — 모델명 CV-21S8 / 톱날 길이 8inch (200mm) / 체인 피치 3/8 LP / 무게 2.0kg / 모터 BLDC 1500W / 무부하 회전 6500rpm / 배터리 21V 4.0Ah Li-ion / 충전 시간 60분 / 작동 시간 45분 / 사이즈 380x180x210mm. 폰트 14pt, 좌측 회색 #666666, 우측 검정 #1A1A1A."
+            }
+          ]
+        },
+        {
+          "name": "Section_12_PackageContents",
+          "type": "SECTION",
+          "height": 1500,
+          "background": "#FFF3E0",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "패키지 구성",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "박스 열면 끝,\n1년 뒤에도 끝나지 않음.",
+              "fontSize": 44,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "SubCopy",
+              "content": "본체 + 배터리 + 충전기 + 체인 오일 250ml + 하드케이스 — 풀세트 9.9만원",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#E65100",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 500,
+              "background": "#FFFFFF",
+              "label": "풀세트 오버헤드 샷 — 베이지 천 위에 5개 구성품 일렬 정렬. 좌→우 순서로 본체·배터리·충전기·체인 오일 250ml 병·하드케이스(살짝 열어 내부 정돈 노출). 각 구성품 위에 작은 흰색 라벨로 이름 표기. 자연광 평면 조명, 그림자 부드럽게."
+            },
+            {
+              "type": "TEXT",
+              "name": "Checklist",
+              "content": "✓ 본체   ✓ 21V 4.0Ah 배터리   ✓ 충전기\n✓ 체인 오일 250ml   ✓ 하드케이스",
+              "fontSize": 24,
+              "fontWeight": 600,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 220,
+              "background": "#FFFFFF",
+              "label": "국내 A/S 보증 마크 원형 배지 — 테두리 2px #FF6B00, 안쪽 흰색, 중앙 '국내 A/S 보증' 14pt 검정 + '신품 검수 완료' 12pt 보조 라벨. 배지 우측에 'KC 인증 번호 표기' 박스 미니 카드."
+            }
+          ]
+        },
+        {
+          "name": "Section_13_FAQ",
+          "type": "SECTION",
+          "height": 1500,
+          "background": "#FAFAFA",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "자주 묻는 질문",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "구매 전 가장 많이 받는 질문 6.",
+              "fontSize": 38,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Q1",
+              "content": "Q. 기존 18V 배터리도 호환되나요?\nA. 글로벌 표준 21V 시리즈 전용입니다. 18V는 어댑터가 필요합니다.",
+              "fontSize": 18,
+              "fontWeight": 400,
+              "color": "#1A1A1A",
+              "textAlign": "LEFT",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Q2",
+              "content": "Q. 배터리 1개로 얼마나 작업하나요?\nA. 4.0Ah 기준 약 45분. 가지치기 30~40그루 / 캠핑 장작 20~25개 분할.",
+              "fontSize": 18,
+              "fontWeight": 400,
+              "color": "#1A1A1A",
+              "textAlign": "LEFT",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Q3",
+              "content": "Q. 비 오는 날에도 쓸 수 있나요?\nA. IPX4 방수 등급. 가벼운 빗방울은 가능, 호우는 권장하지 않습니다.",
+              "fontSize": 18,
+              "fontWeight": 400,
+              "color": "#1A1A1A",
+              "textAlign": "LEFT",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Q4",
+              "content": "Q. A/S는 어디서 받나요?\nA. 서울·부산·대전·광주 직영 센터 4곳 + 전국 택배 수리. 평균 5일.",
+              "fontSize": 18,
+              "fontWeight": 400,
+              "color": "#1A1A1A",
+              "textAlign": "LEFT",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Q5",
+              "content": "Q. 16인치 임업용으로 부족하지 않나요?\nA. 부족합니다. 25cm 이상 통나무는 권장 외. 정원·과수원·캠핑이 우리 영역.",
+              "fontSize": 18,
+              "fontWeight": 400,
+              "color": "#1A1A1A",
+              "textAlign": "LEFT",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Q6",
+              "content": "Q. 환불이 되나요?\nA. 30일 무조건 환불. 사용 흔적 있어도 가능합니다(왕복 배송비만 부담).",
+              "fontSize": 18,
+              "fontWeight": 400,
+              "color": "#1A1A1A",
+              "textAlign": "LEFT",
+              "width": 760
+            }
+          ]
+        },
+        {
+          "name": "Section_14_TrustSignals",
+          "type": "SECTION",
+          "height": 900,
+          "background": "#E8F5E8",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "SectionTag",
+              "content": "신뢰 지표",
+              "fontSize": 22,
+              "fontWeight": 500,
+              "color": "#FF6B00",
+              "textAlign": "CENTER"
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "인증·보증·언론 노출.",
+              "fontSize": 40,
+              "fontWeight": 700,
+              "color": "#1A1A1A",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 240,
+              "background": "#FFFFFF",
+              "label": "인증 마크 가로 5개 정렬 — KC 인증 / KOSHA 안전 가이드 준수 / CE / RoHS / 한국공구공업협회 회원사. 각 마크 80x80, gap 24px, 그레이스케일 처리, hover 시 컬러 (정적 디자인이라 그레이로). 하단 12pt 회색 캡션 '제3자 인증 기관 발급'."
+            },
+            {
+              "type": "IMAGE_AREA",
+              "name": "IMAGE_AREA",
+              "width": 760,
+              "height": 240,
+              "background": "#FFFFFF",
+              "label": "언론 노출 로고 가로 5개 — 매일경제 / 농민신문 / 디지털데일리 / 캠핑픽 / 가드닝코리아. 각 로고 그레이스케일 + 12pt 캡션 '2025년 ㅇㅇ월 보도'. 클러스터 좌우 패딩 충분히."
+            }
+          ]
+        },
+        {
+          "name": "Section_15_CTA",
+          "type": "SECTION",
+          "height": 900,
+          "background": "#FF6B00",
+          "children": [
+            {
+              "type": "TEXT",
+              "name": "Urgency",
+              "content": "오늘 자정까지 — 여분 배터리(4A) 1개 무료 증정",
+              "fontSize": 24,
+              "fontWeight": 500,
+              "color": "#FFFFFF",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Headline",
+              "content": "선착순 100세트\n9.9만원 (정가 13.9만원 / 28% 할인)",
+              "fontSize": 48,
+              "fontWeight": 700,
+              "color": "#FFFFFF",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Bonus",
+              "content": "체인 오일 250ml + 보호장갑 동봉 / 쿠팡 로켓배송 — 내일 도착",
+              "fontSize": 20,
+              "fontWeight": 500,
+              "color": "#FFFFFF",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "BUTTON",
+              "name": "PrimaryCTA",
+              "text": "구매하기 →",
+              "background": "#FFFFFF",
+              "color": "#1A1A1A",
+              "width": 480,
+              "height": 100,
+              "fontSize": 36,
+              "fontWeight": 700
+            },
+            {
+              "type": "TEXT",
+              "name": "RiskRemoval",
+              "content": "신품 검수 + 출고 사진 첨부 / 30일 무조건 환불 / 국내 A/S 보증",
+              "fontSize": 18,
+              "fontWeight": 500,
+              "color": "#FFFFFF",
+              "textAlign": "CENTER",
+              "width": 760
+            },
+            {
+              "type": "TEXT",
+              "name": "Footnote",
+              "content": "표기 가격은 시즌 한정가이며, 재고 소진 시 정가로 복귀합니다.",
+              "fontSize": 12,
+              "fontWeight": 400,
+              "color": "#FFE0CC",
+              "textAlign": "CENTER",
+              "width": 760
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
